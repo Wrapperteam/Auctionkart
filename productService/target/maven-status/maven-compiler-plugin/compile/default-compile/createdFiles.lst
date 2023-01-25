@@ -1,0 +1,7 @@
+com\auction\productService\model\Product.class
+com\auction\productService\productDto\ProductDto.class
+com\auction\productService\repository\ProductRepository.class
+com\auction\productService\controller\ProductController.class
+com\auction\productService\service\ProductService.class
+com\auction\productService\model\Product$ProductBuilder.class
+com\auction\productService\ProductServiceApplication.class
