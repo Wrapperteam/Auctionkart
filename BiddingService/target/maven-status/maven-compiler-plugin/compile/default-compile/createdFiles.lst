@@ -1,0 +1,5 @@
+com\wrapperteam\bidding\model\biddingmodel.class
+com\wrapperteam\bidding\controller\biddingcontroller.class
+com\wrapperteam\bidding\repository\biddingrepo.class
+com\wrapperteam\bidding\BiddingApplication.class
+com\wrapperteam\bidding\service\biddingservice.class
