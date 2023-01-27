@@ -1,5 +1,6 @@
 package com.wrapperteam.bidding.controller;
 
+import com.wrapperteam.bidding.dto.ProductResponse;
 import com.wrapperteam.bidding.exception.AlreadyExistException;
 import com.wrapperteam.bidding.model.biddingmodel;
 import com.wrapperteam.bidding.service.biddingservice;
@@ -32,15 +33,18 @@ public class biddingcontroller {
         }
         return responseEntity;
     }
-    @PutMapping("/update")
-    public String updateBidder(@RequestBody biddingmodel bidder) {
-        return service.updateBidder(bidder);
 
-    }
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable int id) {
         return service.deleteBidder(id);
 
+    }
+
+    @PutMapping("/update")
+    public String bidding(@RequestBody biddingmodel bidder) {
+       // return service.updateBidder(bidder);
+     return service.updateBiddingAmount(bidder);
+        //return "Bidding amount updated successfully";
     }
 
 

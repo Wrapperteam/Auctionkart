@@ -2,6 +2,7 @@ package com.ust.userMicroservice.userMicroservice.model;
 
 
 
+
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -25,6 +26,6 @@ public class User {
     private String userEmail;
     private String phoneNumber;
     private String address;
-    private String userType;
+    private String role;
 
 }

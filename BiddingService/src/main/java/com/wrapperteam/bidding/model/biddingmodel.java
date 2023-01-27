@@ -20,7 +20,7 @@ public class biddingmodel {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int UserID;
-    private String productID;
+    private int productID;
     private int amount;
 
 }
