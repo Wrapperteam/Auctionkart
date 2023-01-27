@@ -42,5 +42,16 @@ public class biddingservice {
         return "Employee Details Deleted";
     }
 
+
+    public String bidding(biddingmodel bidder) {
+        //productID verify
+        //useridverify
+        //product productid,amount,expirydatetime -whole object
+        // (expirydatetime<sysdate)&&
+        //amount is present then (pre amount<given amount) update,else get min amount
+        //
+
+        return null ;
+    }
 }
 

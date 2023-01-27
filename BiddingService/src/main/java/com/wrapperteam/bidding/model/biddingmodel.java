@@ -19,8 +19,9 @@ import java.util.Date;
 public class biddingmodel {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int UserID;
-    private String productID;
+    private int id;
+    private int userId;
+    private String productId;
     private int amount;
 
 }

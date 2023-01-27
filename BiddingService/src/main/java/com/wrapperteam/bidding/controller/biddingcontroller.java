@@ -34,14 +34,17 @@ public class biddingcontroller {
     }
     @PutMapping("/update")
     public String updateBidder(@RequestBody biddingmodel bidder) {
-        return service.updateBidder(bidder);
+       // return service.updateBidder(bidder);
+        return service.bidding(bidder);
 
     }
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable int id) {
         return service.deleteBidder(id);
-
     }
+
+
+
 
 
 }
