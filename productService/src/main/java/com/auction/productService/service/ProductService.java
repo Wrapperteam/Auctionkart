@@ -51,6 +51,7 @@ public class ProductService {
         Product product=null;
         return product.builder()
                 .sellerId(productDto.getSellerId())
+                .username(productDto.getUsername())
                 .productName(productDto.getProductName())
                 .productType(productDto.getProductType())
                 .description(productDto.getDescription())
@@ -63,6 +64,7 @@ public class ProductService {
         ProductDto productDto=null;
         return productDto.builder()
                 .sellerId(product.getSellerId())
+                .username(product.getUsername())
                 .productName(product.getProductName())
                 .productType(product.getProductType())
                 .description(product.getDescription())
@@ -114,5 +116,14 @@ public class ProductService {
 
     public List<ProductDto> getBySellerId(int id) {
         return productRepository.findAll().stream().filter(p->p.getSellerId()==id).map(p->productDtoBuilder(p)).toList();
+    }
+
+    public Product getByProductId(int id) {
+        return productRepository.findById(id).orElseGet(null);
+    }
+
+    public List<Product> getByUsername(String name) {
+        List<Product> product= productRepository.findByUsername(name);
+        return product;
     }
 }
