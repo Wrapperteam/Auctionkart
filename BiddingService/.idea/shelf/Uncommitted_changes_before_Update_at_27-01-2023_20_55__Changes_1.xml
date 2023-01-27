@@ -1,0 +1,79 @@
+<changelist name="Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1" date="1674833248112" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 27-01-2023 20:55 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="../productService/target/classes/com/auction/productService/productDto/ProductDto$ProductDtoBuilder.class" />
+    <option name="AFTER_PATH" value="../productService/target/classes/com/auction/productService/productDto/ProductDto$ProductDtoBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/ProductDto$ProductDtoBuilder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="../productService/target/productService-0.0.1-SNAPSHOT.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/productService-0.0.1-SNAPSHOT.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../productService/target/classes/com/auction/productService/controller/ProductController.class" />
+    <option name="AFTER_PATH" value="../productService/target/classes/com/auction/productService/controller/ProductController.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/ProductController.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../productService/target/classes/com/auction/productService/model/Product$ProductBuilder.class" />
+    <option name="AFTER_PATH" value="../productService/target/classes/com/auction/productService/model/Product$ProductBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/Product$ProductBuilder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="target/classes/com/wrapperteam/bidding/model/biddingmodel$biddingmodelBuilder.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/biddingmodel$biddingmodelBuilder.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="target/classes/com/wrapperteam/bidding/exception/AlreadyExistException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/AlreadyExistException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/wrapperteam/bidding/service/biddingservice.class" />
+    <option name="AFTER_PATH" value="target/classes/com/wrapperteam/bidding/service/biddingservice.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/biddingservice.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../productService/target/classes/com/auction/productService/productDto/ProductDto.class" />
+    <option name="AFTER_PATH" value="../productService/target/classes/com/auction/productService/productDto/ProductDto.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/ProductDto.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/wrapperteam/bidding/controller/biddingcontroller.class" />
+    <option name="AFTER_PATH" value="target/classes/com/wrapperteam/bidding/controller/biddingcontroller.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/biddingcontroller.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="../productService/target/productService-0.0.1-SNAPSHOT.jar.original" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/productService-0.0.1-SNAPSHOT.jar.original" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="../service-registary/.mvn/wrapper/maven-wrapper.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/maven-wrapper.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/wrapperteam/bidding/model/biddingmodel.class" />
+    <option name="AFTER_PATH" value="target/classes/com/wrapperteam/bidding/model/biddingmodel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/biddingmodel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" />
+    <option name="AFTER_PATH" value="../productService/target/test-classes/com/auction/productService/ProductServiceApplicationTests.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/ProductServiceApplicationTests.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/wrapperteam/bidding/BiddingApplication.class" />
+    <option name="AFTER_PATH" value="target/classes/com/wrapperteam/bidding/BiddingApplication.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/BiddingApplication.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="../productService/target/classes/com/auction/productService/model/Product.class" />
+    <option name="AFTER_PATH" value="../productService/target/classes/com/auction/productService/model/Product.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55_[Changes]1/Product.class" />
+  </binary>
+</changelist>

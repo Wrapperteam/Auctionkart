@@ -1,0 +1,61 @@
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>com\\wrapperteam\\bidding\\model\\biddingmodel.class\r\ncom\\wrapperteam\\bidding\\controller\\biddingcontroller.class\r\ncom\\wrapperteam\\bidding\\repository\\biddingrepo.class\r\ncom\\wrapperteam\\bidding\\BiddingApplication.class\r\ncom\\wrapperteam\\bidding\\service\\biddingservice.class\r\n
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst	
+@@ -1,5 +1,0 @@
+-com\wrapperteam\bidding\model\biddingmodel.class
+-com\wrapperteam\bidding\controller\biddingcontroller.class
+-com\wrapperteam\bidding\repository\biddingrepo.class
+-com\wrapperteam\bidding\BiddingApplication.class
+-com\wrapperteam\bidding\service\biddingservice.class
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CompilerConfiguration\">\r\n    <annotationProcessing>\r\n      <profile default=\"true\" name=\"Default\" enabled=\"true\" />\r\n      <profile name=\"Maven default annotation processors profile\" enabled=\"true\">\r\n        <sourceOutputDir name=\"target/generated-sources/annotations\" />\r\n        <sourceTestOutputDir name=\"target/generated-test-sources/test-annotations\" />\r\n        <outputRelativeToContentRoot value=\"true\" />\r\n        <module name=\"BiddingService\" />\r\n        <module name=\"Bidding\" />\r\n      </profile>\r\n    </annotationProcessing>\r\n  </component>\r\n  <component name=\"JavacSettings\">\r\n    <option name=\"ADDITIONAL_OPTIONS_OVERRIDE\">\r\n      <module name=\"Bidding\" options=\"-parameters\" />\r\n      <module name=\"BiddingService\" options=\"-parameters\" />\r\n    </option>\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+--- a/.idea/compiler.xml	
++++ b/.idea/compiler.xml	
+@@ -7,7 +7,7 @@
+         <sourceOutputDir name="target/generated-sources/annotations" />
+         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+         <outputRelativeToContentRoot value="true" />
+-        <module name="BiddingService" />
++        <module name="biddingService" />
+         <module name="Bidding" />
+       </profile>
+     </annotationProcessing>
+@@ -15,7 +15,7 @@
+   <component name="JavacSettings">
+     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+       <module name="Bidding" options="-parameters" />
+-      <module name="BiddingService" options="-parameters" />
++      <module name="biddingService" options="-parameters" />
+     </option>
+   </component>
+ </project>
+\ No newline at end of file
+Index: target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>C:\\Users\\ustjavafsdb403\\Auctionkart\\Bidding\\src\\main\\java\\com\\wrapperteam\\bidding\\service\\biddingservice.java\r\nC:\\Users\\ustjavafsdb403\\Auctionkart\\Bidding\\src\\main\\java\\com\\wrapperteam\\bidding\\model\\biddingmodel.java\r\nC:\\Users\\ustjavafsdb403\\Auctionkart\\Bidding\\src\\main\\java\\com\\wrapperteam\\bidding\\repository\\biddingrepo.java\r\nC:\\Users\\ustjavafsdb403\\Auctionkart\\Bidding\\src\\main\\java\\com\\wrapperteam\\bidding\\BiddingApplication.java\r\nC:\\Users\\ustjavafsdb403\\Auctionkart\\Bidding\\src\\main\\java\\com\\wrapperteam\\bidding\\controller\\biddingcontroller.java\r\n
+===================================================================
+diff --git a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+--- a/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	
++++ b/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst	
+@@ -1,5 +1,6 @@
+-C:\Users\ustjavafsdb403\Auctionkart\Bidding\src\main\java\com\wrapperteam\bidding\service\biddingservice.java
+-C:\Users\ustjavafsdb403\Auctionkart\Bidding\src\main\java\com\wrapperteam\bidding\model\biddingmodel.java
+-C:\Users\ustjavafsdb403\Auctionkart\Bidding\src\main\java\com\wrapperteam\bidding\repository\biddingrepo.java
+-C:\Users\ustjavafsdb403\Auctionkart\Bidding\src\main\java\com\wrapperteam\bidding\BiddingApplication.java
+-C:\Users\ustjavafsdb403\Auctionkart\Bidding\src\main\java\com\wrapperteam\bidding\controller\biddingcontroller.java
++C:\Users\ustjavafsdb403\Auctionkart\BiddingService\src\main\java\com\wrapperteam\bidding\model\biddingmodel.java
++C:\Users\ustjavafsdb403\Auctionkart\BiddingService\src\main\java\com\wrapperteam\bidding\BiddingApplication.java
++C:\Users\ustjavafsdb403\Auctionkart\BiddingService\src\main\java\com\wrapperteam\bidding\repository\biddingrepo.java
++C:\Users\ustjavafsdb403\Auctionkart\BiddingService\src\main\java\com\wrapperteam\bidding\service\biddingservice.java
++C:\Users\ustjavafsdb403\Auctionkart\BiddingService\src\main\java\com\wrapperteam\bidding\exception\AlreadyExistException.java
++C:\Users\ustjavafsdb403\Auctionkart\BiddingService\src\main\java\com\wrapperteam\bidding\controller\biddingcontroller.java
