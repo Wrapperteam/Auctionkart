@@ -1,5 +1,6 @@
 package com.ust.AuthenticationMicroservice.authenticationMicroservice.controller;
 
+import com.ust.AuthenticationMicroservice.authenticationMicroservice.dto.ProductResponse;
 import com.ust.AuthenticationMicroservice.authenticationMicroservice.model.User;
 import com.ust.AuthenticationMicroservice.authenticationMicroservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,14 @@ public class UserAuthController {
 
     @GetMapping("/sellerLogin")
     @PreAuthorize("hasAuthority('SELLER')")
-    public List<User> sellerLogin(){
-        return userService.getAll();
+    public List<ProductResponse> sellerLogin(){
+         return userService.geForSeller();
     }
 
     @GetMapping("/bidderLogin")
     @PreAuthorize("hasAuthority('BIDDER')")
-    public String bidderLogin(){
-        return "bidder logged in";
+    public List<ProductResponse> bidderLogin(){
+        return userService.getAllProducts();
     }
 
 

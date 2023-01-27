@@ -1,10 +1,13 @@
 package com.ust.AuthenticationMicroservice.authenticationMicroservice.service;
 
+import com.ust.AuthenticationMicroservice.authenticationMicroservice.dto.ProductResponse;
 import com.ust.AuthenticationMicroservice.authenticationMicroservice.model.User;
 import com.ust.AuthenticationMicroservice.authenticationMicroservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,22 +17,33 @@ public class UserService {
 
     @Autowired
     private UserRepository repo;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
+    RestTemplate restTemplate = new RestTemplate();
 
-    public List<User> getAll() {
-        return repo.findAll();
+    String userName=null;
+
+
+    public List<ProductResponse> geForSeller() {
+        //RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<List> responseEntity = restTemplate.getForEntity("http://localhost:8082/product/Products/username/"+userName, List.class);
+        List<ProductResponse> response= responseEntity.getBody();
+        return response;
     }
 
-    public void getStudentById() {
-         repo.findAll();
+    public List<ProductResponse> getAllProducts() {
+        ResponseEntity<List> responseEntity = restTemplate.getForEntity("http://localhost:8082/product/products", List.class);
+        List<ProductResponse> response= responseEntity.getBody();
+        System.out.println(response);
+        return response;
     }
 
-    public void saveEncryptedpw(String info){
-        User user=repo.findByName(info).orElseGet(null);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-         repo.save(user);
+
+    public Optional<User> saveEncryptedpw(String info){
+        userName=info;
+        Optional<User> user=repo.findByName(info);
+        user.get().setPassword(passwordEncoder.encode(user.get().getPassword()));
+        return user;
     }
 
 }

@@ -25,6 +25,7 @@ public class UserAuthService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         usrService.saveEncryptedpw(username);
         Optional<User> userInfo = userRepository.findByName(username);
+        userInfo = usrService.saveEncryptedpw(username);
         return userInfo.map(UserAuthDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("user not found " + username));
     }
