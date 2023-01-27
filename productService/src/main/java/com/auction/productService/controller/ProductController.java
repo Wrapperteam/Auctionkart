@@ -75,6 +75,27 @@ public class ProductController {
         }
 
     }
+
+    @GetMapping("/products/{id}")
+    public ResponseEntity<List<ProductDto>> getbyProductId(@PathVariable int id) {
+        Product product = productService.getByProductId(id);
+        if (product.equals("null")) {
+            return new ResponseEntity("No data available", HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity(product, HttpStatus.FOUND);
+        }
+    }
+
+    @GetMapping("/Products/username/{name}")
+    public ResponseEntity<List<Product>> getbyUsername(@PathVariable String name) {
+        List<Product> product = productService.getByUsername(name);
+        if (product.equals("null")) {
+            return new ResponseEntity("No data available", HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity(product, HttpStatus.FOUND);
+        }
+        //return product;
+    }
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable int id){
        return new ResponseEntity(productService.deleteById(id),HttpStatus.ACCEPTED);

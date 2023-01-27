@@ -23,9 +23,9 @@ import java.util.Date;
 public class Product {
     @Id
     @GeneratedValue
-
     private int productId;
     private int sellerId;
+    private String username;
     private String productName;
     private String productType;
     private String description;
