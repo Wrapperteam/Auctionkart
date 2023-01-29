@@ -1,0 +1,8 @@
+com\wrapperteam\bidding\model\BiddingModel$BiddingModelBuilder.class
+com\wrapperteam\bidding\controller\BiddingController.class
+com\wrapperteam\bidding\repository\BiddingrRepo.class
+com\wrapperteam\bidding\service\BiddingService.class
+com\wrapperteam\bidding\exception\AlreadyExistException.class
+com\wrapperteam\bidding\model\BiddingModel.class
+com\wrapperteam\bidding\BiddingApplication.class
+com\wrapperteam\bidding\dto\ProductResponse.class

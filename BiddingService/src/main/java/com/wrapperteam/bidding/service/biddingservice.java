@@ -1,8 +1,8 @@
 package com.wrapperteam.bidding.service;
 
 import com.wrapperteam.bidding.dto.ProductResponse;
-import com.wrapperteam.bidding.model.biddingmodel;
-import com.wrapperteam.bidding.repository.biddingrepo;
+import com.wrapperteam.bidding.model.BiddingModel;
+import com.wrapperteam.bidding.repository.BiddingrRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -12,24 +12,23 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
-public class biddingservice {
+public class BiddingService {
     @Autowired
-    biddingrepo repo;
-    public List<biddingmodel> getAll() {
+    BiddingrRepo repo;
+    public List<BiddingModel> getAll() {
         return repo.findAll();
 
     }
 
-    public biddingmodel saveBidder(biddingmodel bidder) {
+    public BiddingModel saveBidder(BiddingModel bidder) {
         return repo.save(bidder);
     }
 
-    public String updateBidder(biddingmodel bidder) {
+    public String updateBidder(BiddingModel bidder) {
 
-            Optional<biddingmodel> biddupdate = repo.findById(bidder.getUserID());
+            Optional<BiddingModel> biddupdate = repo.findById(bidder.getUserID());
 
             if(biddupdate.isPresent()) {
                 biddupdate.get().setAmount(bidder.getAmount());
@@ -49,7 +48,7 @@ public class biddingservice {
     }
 
 
-    public String updateBiddingAmount(biddingmodel bidder) {
+    public String updateBiddingAmount(BiddingModel bidder) {
         String msg="Amount adding";
         RestTemplate restTemplate = new RestTemplate();
         int productID=bidder.getProductID();
@@ -59,7 +58,7 @@ public class biddingservice {
         LocalDateTime biddingtm = LocalDateTime.now();
         if(biddingtm.compareTo(productDt)<0){
             if(bidder.getAmount()>response.getMinAmount()){
-                biddingmodel bd=repo.findByProductID(bidder.getProductID());
+                BiddingModel bd=repo.findByProductID(bidder.getProductID());
                 if(Objects.nonNull(bd)){
                     bd.setAmount(bidder.getAmount());
                     repo.save(bd);

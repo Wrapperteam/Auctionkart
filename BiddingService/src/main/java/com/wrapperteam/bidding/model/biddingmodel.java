@@ -5,9 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.yaml.snakeyaml.events.Event;
-
-import java.util.Date;
 
 @Entity
 @Table(name="biddingtable")
@@ -16,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Builder
 
-public class biddingmodel {
+public class BiddingModel {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int UserID;

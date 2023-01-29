@@ -1,10 +1,8 @@
 package com.wrapperteam.bidding.controller;
 
-import com.wrapperteam.bidding.dto.ProductResponse;
 import com.wrapperteam.bidding.exception.AlreadyExistException;
-import com.wrapperteam.bidding.model.biddingmodel;
-import com.wrapperteam.bidding.service.biddingservice;
-import jakarta.persistence.GeneratedValue;
+import com.wrapperteam.bidding.model.BiddingModel;
+import com.wrapperteam.bidding.service.BiddingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,16 +12,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/bidder")
-public class biddingcontroller {
+public class BiddingController {
     @Autowired
-    biddingservice service;
+    BiddingService service;
 
     @GetMapping("/all")
-    public List<biddingmodel> getAll(){
+    public List<BiddingModel> getAll(){
         return service.getAll();
     }
     @PostMapping("/save")
-    public ResponseEntity saveDetails(@RequestBody biddingmodel bidder) {
+    public ResponseEntity saveDetails(@RequestBody BiddingModel bidder) {
         ResponseEntity responseEntity;
         try {
             service.saveBidder(bidder);
@@ -41,7 +39,7 @@ public class biddingcontroller {
     }
 
     @PutMapping("/update")
-    public String bidding(@RequestBody biddingmodel bidder) {
+    public String bidding(@RequestBody BiddingModel bidder) {
        // return service.updateBidder(bidder);
      return service.updateBiddingAmount(bidder);
         //return "Bidding amount updated successfully";

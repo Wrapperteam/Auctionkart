@@ -1,12 +1,19 @@
 server:
-  port: 9295
+  port: 9296
 
 spring:
   application:
     name: HYSTRIX-DASHBOARD
 
 
+
 hystrix:
   dashboard:
     proxy-stream-allow-list: "*"
 
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
