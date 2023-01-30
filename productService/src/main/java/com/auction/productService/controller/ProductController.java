@@ -96,7 +96,7 @@ public class ProductController {
         }
     }
     @GetMapping("/amount/id={id}&amount={amount}")
-    public String display(@RequestParam("id") int productId,@RequestParam("amount") double amount) {
+    public String display(@PathVariable("id") int productId,@PathVariable("amount") double amount) {
         return productService.updateAmount(productId,amount);
     }
     @DeleteMapping("delete/{id}")
