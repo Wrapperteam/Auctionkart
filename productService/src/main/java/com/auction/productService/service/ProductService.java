@@ -1,20 +1,28 @@
 package com.auction.productService.service;
 
 import com.auction.productService.model.Product;
+import com.auction.productService.productDto.BiddingDto;
 import com.auction.productService.productDto.ProductDto;
+import com.auction.productService.productDto.UserDto;
 import com.auction.productService.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
 public class ProductService {
-
     @Autowired
     ProductRepository productRepository;
-    public ProductDto addproduct(ProductDto productDto) {
+    @Autowired
+    private JavaMailSender mailSender;
+    public ProductDto addProduct(ProductDto productDto) {
         Product product= new Product();
 
         try{
@@ -58,6 +66,7 @@ public class ProductService {
                 .url(productDto.getUrl())
                 .expiryDateTime(productDto.getExpiryDateTime())
                 .minAmount(productDto.getMinAmount())
+                .ActiveFlag(productDto.isActiveFlag())
                 .build();
     }
     private ProductDto productDtoBuilder(Product product) {
@@ -71,6 +80,7 @@ public class ProductService {
                 .url(product.getUrl())
                 .expiryDateTime(product.getExpiryDateTime())
                 .minAmount(product.getMinAmount())
+                .ActiveFlag(product.isActiveFlag())
                 .build();
     }
 
@@ -106,6 +116,7 @@ public class ProductService {
           updateProduct.setUrl(product.getUrl());
           updateProduct.setExpiryDateTime(product.getExpiryDateTime());
           updateProduct.setMinAmount(product.getMinAmount());
+          updateProduct.setActiveFlag(product.isActiveFlag());
           return "product details updated";
       }else  {
           productRepository.save(product);
@@ -113,7 +124,6 @@ public class ProductService {
       }
 
     }
-
     public List<ProductDto> getBySellerId(int id) {
         return productRepository.findAll().stream().filter(p->p.getSellerId()==id).map(p->productDtoBuilder(p)).toList();
     }
@@ -136,4 +146,25 @@ public class ProductService {
         productRepository.save(product);
         return amount+" updated";
     }
+
+    public void dateVerify(){
+        productRepository.findAll().stream().filter(product -> product.isActiveFlag()&&(product.getExpiryDateTime().isBefore(LocalDateTime.now()))).map(p->sendEmail(p)).toList();
+    }
+
+
+    public Product sendEmail(Product product) {
+        RestTemplate restTemplate=new RestTemplate();
+        SimpleMailMessage message = new SimpleMailMessage();
+        ResponseEntity<BiddingDto> biddingDto=restTemplate.getForEntity("http://localhost:8085/bidder/details/"+product.getProductId(),BiddingDto.class);
+        ResponseEntity<UserDto> seller=restTemplate.getForEntity("https:/",UserDto.class);
+        ResponseEntity<UserDto> bidder=restTemplate.getForEntity("https:/",UserDto.class);
+        message.setTo(seller.getBody().getEmail());
+        message.setSubject("Product "+product.getProductName()+" action is closed");
+        message.setText("body");
+        mailSender.send(message);
+        product.setActiveFlag(false);
+        productRepository.save(product);
+        return product;
+    }
+
 }

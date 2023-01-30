@@ -24,7 +24,7 @@ public class ProductController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto){
         if(productService.validation(productDto)){
-        return new ResponseEntity(productService.addproduct(productDto),HttpStatus.CREATED);
+        return new ResponseEntity(productService.addProduct(productDto),HttpStatus.CREATED);
         }
         else return new ResponseEntity(HttpStatus.BAD_REQUEST);
     }
@@ -94,16 +94,13 @@ public class ProductController {
         } else {
             return new ResponseEntity(product, HttpStatus.FOUND);
         }
-        //return product;
     }
     @GetMapping("/amount/id={id}&amount={amount}")
-    public String display(@RequestParam("id") int Productid,@RequestParam("amount") double amount) {
-        return productService.updateAmount(Productid,amount);
+    public String display(@RequestParam("id") int productId,@RequestParam("amount") double amount) {
+        return productService.updateAmount(productId,amount);
     }
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable int id){
        return new ResponseEntity(productService.deleteById(id),HttpStatus.ACCEPTED);
-
     }
-
 }
