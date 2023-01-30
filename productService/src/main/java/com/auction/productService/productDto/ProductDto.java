@@ -23,4 +23,5 @@ public class ProductDto {
     private double minAmount;
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime expiryDateTime;
+    private boolean ActiveFlag;
 }
