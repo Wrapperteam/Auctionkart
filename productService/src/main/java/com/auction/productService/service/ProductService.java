@@ -126,4 +126,14 @@ public class ProductService {
         List<Product> product= productRepository.findByUsername(name);
         return product;
     }
+
+    public String updateAmount(int productId, double amount) {
+        Product product=productRepository.findById(productId).get();
+        if(Objects.isNull(product)){
+            return "please check your ProductId";
+        }
+        product.setMinAmount(amount);
+        productRepository.save(product);
+        return amount+" updated";
+    }
 }
