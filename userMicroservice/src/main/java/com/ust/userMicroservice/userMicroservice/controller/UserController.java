@@ -1,5 +1,6 @@
 package com.ust.userMicroservice.userMicroservice.controller;
 
+import com.ust.userMicroservice.userMicroservice.Dto.UserDto;
 import com.ust.userMicroservice.userMicroservice.exception.UserAlreadyExistException;
 import com.ust.userMicroservice.userMicroservice.exception.UserNotFoundException;
 import com.ust.userMicroservice.userMicroservice.model.User;
@@ -21,10 +22,10 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/findUser/{id}")
-    public ResponseEntity<User> getUser(@PathVariable("id") int userId) {
-        User user = userService.getUser(userId);
-        if(Objects.nonNull(user))
-            return ResponseEntity.ok().body(user);
+    public ResponseEntity<UserDto> getUser(@PathVariable("id") int userId) {
+        UserDto userDto = userService.getUser(userId);
+        if(Objects.nonNull(userDto))
+            return ResponseEntity.ok().body(userDto);
         return ResponseEntity.notFound().build();
     }
 
