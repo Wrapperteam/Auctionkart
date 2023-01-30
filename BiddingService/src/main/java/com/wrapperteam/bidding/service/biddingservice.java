@@ -65,6 +65,7 @@ public class BiddingService {
                 }else {
                     repo.save(bidder);
                 }
+                restTemplate.getForEntity("http://localhost:8082/amount/id="+productID+"&amount="+bd.getAmount(), String.class);
                 msg = "Amount successfully added";
             }else {
                 msg = "Amount should be greater than" + response.getMinAmount();
