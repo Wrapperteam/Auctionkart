@@ -96,6 +96,10 @@ public class ProductController {
         }
         //return product;
     }
+    @GetMapping("/amount/id={id}&amount={amount}")
+    public String display(@RequestParam("id") int Productid,@RequestParam("amount") double amount) {
+        return productService.updateAmount(Productid,amount);
+    }
     @DeleteMapping("delete/{id}")
     public ResponseEntity<String> deleteById(@PathVariable int id){
        return new ResponseEntity(productService.deleteById(id),HttpStatus.ACCEPTED);
