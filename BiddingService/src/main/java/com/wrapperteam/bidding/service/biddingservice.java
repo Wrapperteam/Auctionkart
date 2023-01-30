@@ -28,18 +28,18 @@ public class BiddingService {
 
     public String updateBidder(BiddingModel bidder) {
 
-            Optional<BiddingModel> biddupdate = repo.findById(bidder.getUserID());
+        Optional<BiddingModel> biddupdate = repo.findById(bidder.getUserID());
 
-            if(biddupdate.isPresent()) {
-                biddupdate.get().setAmount(bidder.getAmount());
+        if(biddupdate.isPresent()) {
+            biddupdate.get().setAmount(bidder.getAmount());
 
-            }else {
-                return "Not found";
-            }
-
-            repo.save(biddupdate.get());
-            return "Successfully saved";
+        }else {
+            return "Not found";
         }
+
+        repo.save(biddupdate.get());
+        return "Successfully saved";
+    }
     public String deleteBidder(Integer bidder) {
         // TODO Auto-generated method stub
         repo.deleteById(bidder);
