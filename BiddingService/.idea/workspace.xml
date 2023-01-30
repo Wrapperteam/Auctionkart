@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e4922203-bb6f-4f1a-9192-78c18a974c78" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-01-2023_14_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-01-2023_14_21__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/controller/biddingcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/controller/BiddingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/model/biddingmodel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/model/BiddingModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/repository/BiddingrRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/repository/BiddingrRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/biddingservice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2L2fwDQhZczgyhHC9Me5b4Hv0La" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/ustjavafsdb419/Documents/new_AuctionKart/Auctionkart/BiddingService"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="BiddingApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.wrapperteam.bidding.BiddingApplication" />
+      <module name="biddingService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.wrapperteam.bidding.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BiddingApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e4922203-bb6f-4f1a-9192-78c18a974c78" name="Changes" comment="" />
+      <created>1675074334701</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675074334701</updated>
+    </task>
+    <servers />
+  </component>
+</project>

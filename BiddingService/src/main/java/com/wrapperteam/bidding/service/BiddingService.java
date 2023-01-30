@@ -58,7 +58,7 @@ public class BiddingService {
         LocalDateTime biddingtm = LocalDateTime.now();
         if(biddingtm.compareTo(productDt)<0){
             if(bidder.getAmount()>response.getMinAmount()){
-                BiddingModel bd=repo.findByProductID(bidder.getProductID());
+                BiddingModel bd=repo.findByProductID(bidder.getProductID()).get();
                 if(Objects.nonNull(bd)){
                     bd.setAmount(bidder.getAmount());
                     repo.save(bd);
@@ -78,6 +78,11 @@ public class BiddingService {
         return msg;
 
 
+    }
+
+    public BiddingModel getProductById(int id) {
+        Optional<BiddingModel> userOpt =  repo.findByProductID(id);
+        return userOpt.orElseGet(null);
     }
 }
 

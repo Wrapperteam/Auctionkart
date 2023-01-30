@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/bidder")
@@ -38,11 +39,17 @@ public class BiddingController {
 
     }
 
+    @GetMapping("/details/{id}")
+    public ResponseEntity<?> getByProductId(@PathVariable int id){
+        BiddingModel biddingModel = service.getProductById(id);
+        if(Objects.nonNull(biddingModel))
+            return ResponseEntity.ok().body(biddingModel);
+        return ResponseEntity.notFound().build();
+    }
+
     @PutMapping("/update")
     public String bidding(@RequestBody BiddingModel bidder) {
-       // return service.updateBidder(bidder);
      return service.updateBiddingAmount(bidder);
-        //return "Bidding amount updated successfully";
     }
 
 
