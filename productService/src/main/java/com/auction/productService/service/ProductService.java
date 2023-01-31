@@ -5,15 +5,26 @@ import com.auction.productService.productDto.BiddingDto;
 import com.auction.productService.productDto.ProductDto;
 import com.auction.productService.productDto.UserDto;
 import com.auction.productService.repository.ProductRepository;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfWriter;
+import jakarta.activation.DataSource;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.util.ByteArrayDataSource;
+import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.ByteArrayInputStream;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -32,7 +43,6 @@ public class ProductService {
          productRepository.save(product);
         return productDto;
     }
-
 
     public List<ProductDto> getAllProducts() {
         List<ProductDto> list=new ArrayList<>();
@@ -64,7 +74,7 @@ public class ProductService {
                 .url(productDto.getUrl())
                 .expiryDateTime(productDto.getExpiryDateTime())
                 .minAmount(productDto.getMinAmount())
-                .ActiveFlag(productDto.isActiveFlag())
+                .activeFlag(productDto.isActiveFlag())
                 .build();
     }
     private ProductDto productDtoBuilder(Product product) {
@@ -77,7 +87,7 @@ public class ProductService {
                 .url(product.getUrl())
                 .expiryDateTime(product.getExpiryDateTime())
                 .minAmount(product.getMinAmount())
-                .ActiveFlag(product.isActiveFlag())
+                .activeFlag(product.isActiveFlag())
                 .build();
     }
 
@@ -124,13 +134,9 @@ public class ProductService {
     public List<ProductDto> getBySellerId(int id) {
         return productRepository.findAll().stream().filter(p->p.getSellerId()==id).map(p->productDtoBuilder(p)).toList();
     }
-
     public Product getByProductId(int id) {
         return productRepository.findById(id).orElseGet(null);
     }
-
-
-
     public String updateAmount(int productId, double amount) {
         Product product=productRepository.findById(productId).get();
         if(Objects.isNull(product)){
@@ -140,26 +146,93 @@ public class ProductService {
         productRepository.save(product);
         return amount+" updated";
     }
-
     public void dateVerify(){
-        productRepository.findAll().stream().filter(product -> product.isActiveFlag()&&(product.getExpiryDateTime().isBefore(LocalDateTime.now()))).map(p->sendEmail(p)).toList();
+        productRepository.findAll().stream().filter(product -> product.isActiveFlag()&&(product.getExpiryDateTime().isBefore(LocalDateTime.now()))).map(p-> {
+            try {
+                return sendEmail(p);
+            } catch (DocumentException e) {
+                throw new RuntimeException(e);
+            }
+        }).toList();
     }
-
-
-    public Product sendEmail(Product product) {
+    public Product sendEmail(Product product) throws DocumentException {
         RestTemplate restTemplate=new RestTemplate();
         SimpleMailMessage message = new SimpleMailMessage();
+        ResponseEntity<UserDto> seller=restTemplate.getForEntity("http://localhost:8082/api/findUser/"+product.getSellerId(),UserDto.class);
         ResponseEntity<BiddingDto> biddingDto=restTemplate.getForEntity("http://localhost:8085/bidder/details/"+product.getProductId(),BiddingDto.class);
-        Product product2=productRepository.findById(biddingDto.getBody().getProductID()).get();
-        ResponseEntity<UserDto> seller=restTemplate.getForEntity("http://localhost:8082/api/findUser/"+product2.getSellerId(),UserDto.class);
-        ResponseEntity<UserDto> bidder=restTemplate.getForEntity("http://localhost:8082/api/findUser/"+biddingDto.getBody().getBidderId(),UserDto.class);
-        message.setTo(seller.getBody().getEmail());
-        message.setSubject("Product "+product.getProductName()+" action is closed");
-        message.setText("body");
-        mailSender.send(message);
+       /* if(Objects.isNull(biddingDto.getBody())){
+            message.setTo(seller.getBody().getEmail());
+            message.setSubject("Product "+product.getProductName()+" action is closed without any Bidding");
+           // message.setText(msgBody());
+            //mailSender.send(message);
+        } else { */
+            ResponseEntity<UserDto> bidder = restTemplate.getForEntity("http://localhost:8082/api/findUser/" + biddingDto.getBody().getBidderId(), UserDto.class);
+           biddedDocuments(seller.getBody(),product,bidder.getBody());
+          /*  message.setTo(seller.getBody().getEmail());
+            message.setSubject("Product " + product.getProductName() + " action is  closed with "+product.getMinAmount());
+            message.setText("body");
+            mailSender.send(message);
+        }*/
         product.setActiveFlag(false);
         productRepository.save(product);
         return product;
+    }
+
+    public void biddedDocuments(UserDto seller,Product product,UserDto bidder) throws DocumentException {
+        try {
+            Document document = new Document();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+// FileOutputStream baos=new FileOutputStream(new File("E:\\BusTicket_Booking\\InvoiceLocation\\Tickets.pdf"));
+            PdfWriter.getInstance(document, baos);
+            document.open();
+            Paragraph p1=new Paragraph("Bidded Details");
+            p1.setAlignment(Element.ALIGN_MIDDLE);
+            document.add(p1);
+            Image img = Image.getInstance("images\\"+product.getUrl());
+            img.scaleAbsolute(200, 200);
+
+            Phrase phrase = new Phrase();
+            phrase.add(new Chunk(img, 350,-200));
+            System.out.println(img);
+            document.add(new Paragraph(phrase));
+            document.add(new Paragraph("------------------------------------------------------------------"));
+            document.add(new Paragraph("Product Details:"));
+            document.add(new Paragraph("Product Id:" + product.getProductId()));
+            document.add(new Paragraph("Product Name:" + product.getProductName()));
+            document.add(new Paragraph("Product Type:" + product.getProductType()));
+            document.add(new Paragraph("Product Description:" + product.getDescription()));
+            document.add(new Paragraph("Product Expiry Date:" + product.getExpiryDateTime()));
+            document.add(new Paragraph("-------------------------------------------------------------------"));
+            document.add(new Paragraph("Seller Details:"));
+            document.add(new Paragraph("Seller ID:" + seller.getUserId()));
+            document.add(new Paragraph("Seller Name:"+seller.getName()));
+            document.add(new Paragraph("Seller Phone number:"+seller.getPhoneNumber()));
+            document.add(new Paragraph("Seller Email:"+seller.getUserEmail()));
+            document.add(new Paragraph("-------------------------------------------------------------------"));
+            document.add(new Paragraph("Bidder Details:"));
+            document.add(new Paragraph("Bidder ID:" + bidder.getUserId()));
+            document.add(new Paragraph("Bidder Name:"+bidder.getName()));
+            document.add(new Paragraph("Bidder Phone number:"+bidder.getPhoneNumber()));
+            document.add(new Paragraph("Bidder Email:"+bidder.getUserEmail()));
+            document.close();
+            byte[] pdfBytes = baos.toByteArray();
+            MimeMessage mimeMessage = mailSender.createMimeMessage();
+            MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
+            mimeMessageHelper.setTo(seller.getUserEmail());
+            if(bidder.getUserEmail().isBlank()) {
+                mimeMessageHelper.setSubject("Product " + product.getProductName() + " auction is closed without any Bidding");
+            }else{
+                mimeMessageHelper.setSubject("Product " + product.getProductName() +" action is  closed with "+product.getMinAmount());
+                mimeMessageHelper.setCc(bidder.getUserEmail());
+            }
+            mimeMessageHelper.setText("Hi "+seller.getName());
+            FileSystemResource fileSystem = new FileSystemResource(product.getUrl());
+            DataSource source = new ByteArrayDataSource( new ByteArrayInputStream(pdfBytes),"document/pdf");
+            mimeMessageHelper.addAttachment("Bidding.pdf", source);
+            mailSender.send(mimeMessage);
+            } catch (Exception e) {e.printStackTrace();
+            System.out.println("Exception occured in document generation!");
+        }
     }
 
 }
