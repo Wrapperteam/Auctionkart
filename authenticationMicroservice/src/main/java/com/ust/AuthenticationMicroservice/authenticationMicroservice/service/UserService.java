@@ -22,17 +22,18 @@ public class UserService {
     RestTemplate restTemplate = new RestTemplate();
 
     String userName=null;
+    int userId=0;
 
 
     public List<ProductResponse> geForSeller() {
         //RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<List> responseEntity = restTemplate.getForEntity("http://localhost:8082/product/Products/username/"+userName, List.class);
+        ResponseEntity<List> responseEntity = restTemplate.getForEntity("http://localhost:8083/product/seller/"+userId, List.class);
         List<ProductResponse> response= responseEntity.getBody();
         return response;
     }
 
     public List<ProductResponse> getAllProducts() {
-        ResponseEntity<List> responseEntity = restTemplate.getForEntity("http://localhost:8082/product/products", List.class);
+        ResponseEntity<List> responseEntity = restTemplate.getForEntity("http://localhost:8083/product/products", List.class);
         List<ProductResponse> response= responseEntity.getBody();
         System.out.println(response);
         return response;
@@ -43,6 +44,7 @@ public class UserService {
         userName=info;
         Optional<User> user=repo.findByName(info);
         user.get().setPassword(passwordEncoder.encode(user.get().getPassword()));
+        userId =user.get().getUserId();
         return user;
     }
 
