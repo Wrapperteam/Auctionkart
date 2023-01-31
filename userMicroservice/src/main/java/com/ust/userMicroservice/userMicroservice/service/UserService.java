@@ -34,17 +34,22 @@ public class UserService {
     }
 
     public ResponseEntity<?> saveUser(User user) {
-        User userResponse =repo.save(user);
-        RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<?> responseEntity=null;
-        if(userResponse!=null){
-            if(userResponse.getRole().equals("SELLER")){
-                responseEntity = restTemplate.getForEntity("http://localhost:8081/api/v1/sellerLogin",String.class);
-            }else if(userResponse.getRole().equals("BIDDER")){
-                responseEntity = restTemplate.getForEntity("http://localhost:8081/api/v1/bidderLogin",String.class);
-            }else{
-                responseEntity=new ResponseEntity<String>("Invalid Role", HttpStatus.NOT_FOUND);
+        ResponseEntity<?> responseEntity = null;
+        if(user.getRole().equals("SELLER")||user.getRole().equals("BIDDER")) {
+            User userResponse = repo.save(user);
+            RestTemplate restTemplate = new RestTemplate();
+
+            if (userResponse != null) {
+                if (userResponse.getRole().equals("SELLER")) {
+                    responseEntity = restTemplate.getForEntity("http://localhost:8081/api/v1/sellerLogin", String.class);
+                } else if (userResponse.getRole().equals("BIDDER")) {
+                    responseEntity = restTemplate.getForEntity("http://localhost:8081/api/v1/bidderLogin", String.class);
+                } else {
+                    responseEntity = new ResponseEntity<String>("Invalid Role", HttpStatus.NOT_FOUND);
+                }
             }
+        }else{
+            responseEntity = new ResponseEntity<String>("Provide Valid User role (SELLER or BIDDER)",HttpStatus.CONFLICT);
         }
         return responseEntity;
     }
