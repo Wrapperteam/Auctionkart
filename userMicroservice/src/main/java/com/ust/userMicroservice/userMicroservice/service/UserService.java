@@ -5,7 +5,10 @@ import com.ust.userMicroservice.userMicroservice.exception.UserNotFoundException
 import com.ust.userMicroservice.userMicroservice.model.User;
 import com.ust.userMicroservice.userMicroservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
@@ -30,8 +33,20 @@ public class UserService {
         return userDto;
     }
 
-    public void saveUser(User user) {
-        repo.save(user);
+    public ResponseEntity<?> saveUser(User user) {
+        User userResponse =repo.save(user);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<?> responseEntity=null;
+        if(userResponse!=null){
+            if(userResponse.getRole().equals("SELLER")){
+                responseEntity = restTemplate.getForEntity("http://localhost:8081/api/v1/sellerLogin",String.class);
+            }else if(userResponse.getRole().equals("BIDDER")){
+                responseEntity = restTemplate.getForEntity("http://localhost:8081/api/v1/bidderLogin",String.class);
+            }else{
+                responseEntity=new ResponseEntity<String>("Invalid Role", HttpStatus.NOT_FOUND);
+            }
+        }
+        return responseEntity;
     }
 
     public List<User> getAllUsers() {
