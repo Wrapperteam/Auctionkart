@@ -33,9 +33,7 @@ public class UserController {
     public ResponseEntity addUser(@RequestBody User user) throws UserAlreadyExistException{
         ResponseEntity responseEntity;
         try{
-            userService.saveUser(user);
-            responseEntity=new ResponseEntity<String>("Successfully created", HttpStatus.CREATED);
-
+            responseEntity= userService.saveUser(user);
         }catch(UserAlreadyExistException ex){
             responseEntity=new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
         }
