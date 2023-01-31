@@ -3,6 +3,7 @@ package com.wrapperteam.bidding.service;
 import com.wrapperteam.bidding.dto.ProductResponse;
 import com.wrapperteam.bidding.model.BiddingModel;
 import com.wrapperteam.bidding.repository.BiddingrRepo;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -47,13 +48,12 @@ public class BiddingService {
         return "Employee Details Deleted";
     }
 
-
     public String updateBiddingAmount(BiddingModel bidder) {
         String msg="Amount adding";
         RestTemplate restTemplate = new RestTemplate();
         int productID=bidder.getProductID();
         ResponseEntity<ProductResponse> responseEntity = restTemplate.getForEntity("http://localhost:8083/product/products/"+productID, ProductResponse.class);
-        String role =restTemplate.getForEntity("http://localhost:8082/api/findUser/role/"+bidder.getBidderId(), String.class).getBody();
+        String role =restTemplate.getForEntity("http://localhost:8083/api/findUser/role/"+bidder.getBidderId(), String.class).getBody();
         ProductResponse response= responseEntity.getBody();
         LocalDateTime productDt = response.getExpiryDateTime();
         LocalDateTime biddingtm = LocalDateTime.now();
@@ -70,7 +70,7 @@ public class BiddingService {
                         } else {
                             repo.save(bidder);
                         }
-                        restTemplate.put("http://localhost:8083/product/amount/id=" + productID + "&amount=" + bidder.getAmount(), String.class);
+                        restTemplate.put("http://localhost:8082/product/amount/id=" + productID + "&amount=" + bidder.getAmount(), String.class);
                         msg = "Amount successfully added";
                     } else {
                         msg = "Amount should be greater than" + response.getMinAmount();
