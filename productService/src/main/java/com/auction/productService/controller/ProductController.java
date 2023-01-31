@@ -85,16 +85,7 @@ public class ProductController {
             return new ResponseEntity(product, HttpStatus.FOUND);
         }
     }
-
-    @GetMapping("/Products/username/{name}")
-    public ResponseEntity<List<Product>> getbyUsername(@PathVariable String name) {
-        List<Product> product = productService.getByUsername(name);
-        if (product.equals("null")) {
-            return new ResponseEntity("No data available", HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity(product, HttpStatus.FOUND);
-        }
-    }
+    
     @GetMapping("/amount/id={id}&amount={amount}")
     public String display(@PathVariable("id") int productId,@PathVariable("amount") double amount) {
         return productService.updateAmount(productId,amount);

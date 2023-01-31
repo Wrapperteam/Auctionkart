@@ -15,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 public class ProductDto {
     private int sellerId;
-    private String username;
     private String productName;
     private String productType;
     private String description;

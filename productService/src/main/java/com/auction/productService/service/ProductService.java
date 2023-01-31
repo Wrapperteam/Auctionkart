@@ -58,7 +58,6 @@ public class ProductService {
         Product product=null;
         return product.builder()
                 .sellerId(productDto.getSellerId())
-                .username(productDto.getUsername())
                 .productName(productDto.getProductName())
                 .productType(productDto.getProductType())
                 .description(productDto.getDescription())
@@ -72,7 +71,6 @@ public class ProductService {
         ProductDto productDto=null;
         return productDto.builder()
                 .sellerId(product.getSellerId())
-                .username(product.getUsername())
                 .productName(product.getProductName())
                 .productType(product.getProductType())
                 .description(product.getDescription())
@@ -131,10 +129,7 @@ public class ProductService {
         return productRepository.findById(id).orElseGet(null);
     }
 
-    public List<Product> getByUsername(String name) {
-        List<Product> product= productRepository.findByUsername(name);
-        return product;
-    }
+
 
     public String updateAmount(int productId, double amount) {
         Product product=productRepository.findById(productId).get();
