@@ -72,5 +72,12 @@ public class UserController {
 
     }
 
+    @GetMapping("/findUser/role/{id}")
+    public String getRole(@PathVariable("id") int userId) {
+        UserDto userDto = userService.getUser(userId);
+        if(Objects.nonNull(userDto))
+            return userDto.getRole();
+        return "User not found";
+    }
 
 }
