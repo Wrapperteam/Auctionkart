@@ -85,8 +85,8 @@ public class ProductController {
             return new ResponseEntity(product, HttpStatus.FOUND);
         }
     }
-    
-    @GetMapping("/amount/id={id}&amount={amount}")
+
+    @PutMapping("/amount/id={id}&amount={amount}")
     public String display(@PathVariable("id") int productId,@PathVariable("amount") double amount) {
         return productService.updateAmount(productId,amount);
     }

@@ -52,37 +52,41 @@ public class BiddingService {
         String msg="Amount adding";
         RestTemplate restTemplate = new RestTemplate();
         int productID=bidder.getProductID();
-        ResponseEntity<ProductResponse> responseEntity = restTemplate.getForEntity("http://localhost:8082/product/products/"+productID, ProductResponse.class);
+        ResponseEntity<ProductResponse> responseEntity = restTemplate.getForEntity("http://localhost:8083/product/products/"+productID, ProductResponse.class);
         ProductResponse response= responseEntity.getBody();
         LocalDateTime productDt = response.getExpiryDateTime();
         LocalDateTime biddingtm = LocalDateTime.now();
-        if(biddingtm.compareTo(productDt)<0){
-            if(bidder.getAmount()>response.getMinAmount()){
-                BiddingModel bd=repo.findByProductID(bidder.getProductID()).get();
-                if(Objects.nonNull(bd)){
-                    bd.setAmount(bidder.getAmount());
-                    repo.save(bd);
-                }else {
-                    repo.save(bidder);
+        if(response.isActiveFlag()) {
+            if (biddingtm.compareTo(productDt) < 0) {
+                if (bidder.getAmount() > response.getMinAmount()) {
+                    BiddingModel bd = repo.findByProductID(bidder.getProductID());
+                    if (Objects.nonNull(bd)) {
+                        bd.setAmount(bidder.getAmount());
+                        bd.setBidderId(bidder.getBidderId());
+                        repo.save(bd);
+                    } else {
+                        repo.save(bidder);
+                    }
+                    restTemplate.put("http://localhost:8083/product/amount/id=" + productID + "&amount=" + bidder.getAmount(), String.class);
+                    msg = "Amount successfully added";
+                } else {
+                    msg = "Amount should be greater than" + response.getMinAmount();
                 }
-               restTemplate.put("http://localhost:8084/product/amount/id="+productID+"&amount="+bd.getAmount(), String.class);
-                msg = "Amount successfully added";
-            }else {
-                msg = "Amount should be greater than" + response.getMinAmount();
+
+            } else {
+                msg = "End time for "+response.getProductId()+" is " + response.getExpiryDateTime();
             }
-
-        }else {
-            msg = "Time should be greater than" + response.getExpiryDateTime();
+        }else{
+            msg = "Bidding for "+response.getProductId()+" is closed";
         }
-
         return msg;
 
 
     }
 
     public BiddingModel getProductById(int id) {
-        Optional<BiddingModel> userOpt =  repo.findByProductID(id);
-        return userOpt.orElseGet(null);
+       BiddingModel userOpt =  repo.findByProductID(id);
+        return userOpt;
     }
 }
 

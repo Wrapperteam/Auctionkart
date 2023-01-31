@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface BiddingrRepo extends JpaRepository<BiddingModel,Integer>{
 
 
-    Optional<BiddingModel> findByProductID(int productID);
+    BiddingModel findByProductID(int productID);
 }
