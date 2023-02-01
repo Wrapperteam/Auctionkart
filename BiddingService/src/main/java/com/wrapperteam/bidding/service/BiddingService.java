@@ -53,7 +53,7 @@ public class BiddingService {
         RestTemplate restTemplate = new RestTemplate();
         int productID=bidder.getProductID();
         ResponseEntity<ProductResponse> responseEntity = restTemplate.getForEntity("http://localhost:8083/product/products/"+productID, ProductResponse.class);
-        String role =restTemplate.getForEntity("http://localhost:8083/api/findUser/role/"+bidder.getBidderId(), String.class).getBody();
+        String role =restTemplate.getForEntity("http://localhost:8082/api/findUser/role/"+bidder.getBidderId(), String.class).getBody();
         ProductResponse response= responseEntity.getBody();
         LocalDateTime productDt = response.getExpiryDateTime();
         LocalDateTime biddingtm = LocalDateTime.now();
@@ -70,7 +70,7 @@ public class BiddingService {
                         } else {
                             repo.save(bidder);
                         }
-                        restTemplate.put("http://localhost:8082/product/amount/id=" + productID + "&amount=" + bidder.getAmount(), String.class);
+                        restTemplate.put("http://localhost:8083/product/amount/id=" + productID + "&amount=" + bidder.getAmount(), String.class);
                         msg = "Amount successfully added";
                     } else {
                         msg = "Amount should be greater than" + response.getMinAmount();
