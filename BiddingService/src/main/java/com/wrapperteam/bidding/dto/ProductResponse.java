@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 public class ProductResponse {
     private int productId;
     private int sellerId;
-    private String username;
     private String productName;
     private String productType;
     private String description;
@@ -23,8 +22,7 @@ public class ProductResponse {
     private double minAmount;
     @JsonFormat(pattern="yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime expiryDateTime;
-
-    private boolean ActiveFlag;
+    private boolean activeFlag;
 
 
 }
