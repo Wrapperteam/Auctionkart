@@ -143,12 +143,12 @@ public class ProductService {
         return product.get();
     }
     public String updateAmount(int productId, double amount) {
-        Optional<Product> product=productRepository.findById(productId);
-        if(product.isPresent()){
+        Product product=productRepository.findById(productId).get();
+        if(Objects.isNull(product)){
             return "please check your ProductId";
         }
-        product.get().setMinAmount(amount);
-        productRepository.save(product.get());
+        product.setMinAmount(amount);
+        productRepository.save(product);
         return amount+" updated";
     }
     public void dateVerify(){
