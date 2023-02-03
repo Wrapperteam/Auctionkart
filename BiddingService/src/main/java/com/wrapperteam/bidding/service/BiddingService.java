@@ -7,6 +7,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
@@ -52,9 +53,13 @@ public class BiddingService {
         String msg="Amount adding";
         RestTemplate restTemplate = new RestTemplate();
         int productID=bidder.getProductID();
-        ResponseEntity<ProductResponse> responseEntity = restTemplate.getForEntity("http://localhost:8083/product/products/"+productID, ProductResponse.class);
+        //ProductResponse responseEntity;
+        ProductResponse responseEntity = restTemplate.getForObject("http://localhost:8083/product/products/" + productID, ProductResponse.class);
+        if(Objects.isNull(responseEntity)){
+            return "Product not found";
+        }
         String role =restTemplate.getForEntity("http://localhost:8082/api/findUser/role/"+bidder.getBidderId(), String.class).getBody();
-        ProductResponse response= responseEntity.getBody();
+        ProductResponse response= responseEntity;
         LocalDateTime productDt = response.getExpiryDateTime();
         LocalDateTime biddingtm = LocalDateTime.now();
         if(response.isActiveFlag()) {
@@ -70,8 +75,12 @@ public class BiddingService {
                         } else {
                             repo.save(bidder);
                         }
+                        try{
                         restTemplate.put("http://localhost:8083/product/amount/id=" + productID + "&amount=" + bidder.getAmount(), String.class);
                         msg = "Amount successfully added";
+                        } catch (RestClientException e) {
+                        throw e;
+                         }
                     } else {
                         msg = "Amount should be greater than" + response.getMinAmount();
                     }

@@ -5,14 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4922203-bb6f-4f1a-9192-78c18a974c78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_27-01-2023_20_55__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-01-2023_14_21__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_30-01-2023_14_21__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/controller/biddingcontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/controller/BiddingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/model/biddingmodel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/model/BiddingModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/repository/BiddingrRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/repository/BiddingrRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/biddingservice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/BiddingDto$BiddingDtoBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/BiddingDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/UserDto$UserDtoBuilder.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/UserDto.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/scheduler/Scheduler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/biddingService.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/biddingService.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/BiddingApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/BiddingApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/repository/BiddingrRepo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/repository/BiddingrRepo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/service/BiddingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/service/BiddingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/auction/productService/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/auction/productService/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/auction/productService/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/auction/productService/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/ProductServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/ProductServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/controller/ProductController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/controller/ProductController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/model/Product$ProductBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/model/Product$ProductBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/ProductDto$ProductDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/ProductDto$ProductDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/ProductDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/productDto/ProductDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/repository/ProductRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/repository/ProductRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/service/ProductService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/productService-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/productService-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/productService-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/productService-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +59,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/ustjavafsdb419/Documents/new_AuctionKart/Auctionkart/BiddingService"
+    "last_opened_file_path": "C:/Users/ustjavafsdb419/Documents/final code/Auctionkart/BiddingService"
   }
 }]]></component>
   <component name="RunManager">

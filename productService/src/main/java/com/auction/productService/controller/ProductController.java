@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/product")
@@ -77,13 +78,8 @@ public class ProductController {
     }
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<List<ProductDto>> getbyProductId(@PathVariable int id) {
-        Product product = productService.getByProductId(id);
-        if (product.equals("null")) {
-            return new ResponseEntity("No data available", HttpStatus.NOT_FOUND);
-        } else {
-            return new ResponseEntity(product, HttpStatus.FOUND);
-        }
+    public Product getbyProductId(@PathVariable int id) {
+        return productService.getByProductId(id);
     }
 
     @PutMapping("/amount/id={id}&amount={amount}")

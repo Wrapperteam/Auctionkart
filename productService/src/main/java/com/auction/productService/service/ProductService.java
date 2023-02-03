@@ -13,6 +13,7 @@ import jakarta.mail.util.ByteArrayDataSource;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -134,16 +135,20 @@ public class ProductService {
     public List<ProductDto> getBySellerId(int id) {
         return productRepository.findAll().stream().filter(p->p.getSellerId()==id).map(p->productDtoBuilder(p)).toList();
     }
-    public Product getByProductId(int id) {
-        return productRepository.findById(id).orElseGet(null);
+    public  Product getByProductId(int id) {
+        Optional<Product> product=productRepository.findById(id);
+        if(!product.isPresent()){
+           return null;
+        }
+        return product.get();
     }
     public String updateAmount(int productId, double amount) {
-        Product product=productRepository.findById(productId).get();
-        if(Objects.isNull(product)){
+        Optional<Product> product=productRepository.findById(productId);
+        if(product.isPresent()){
             return "please check your ProductId";
         }
-        product.setMinAmount(amount);
-        productRepository.save(product);
+        product.get().setMinAmount(amount);
+        productRepository.save(product.get());
         return amount+" updated";
     }
     public void dateVerify(){

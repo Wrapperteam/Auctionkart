@@ -5,4 +5,9 @@ com\auction\productService\controller\ProductController.class
 com\auction\productService\service\ProductService.class
 com\auction\productService\model\Product$ProductBuilder.class
 com\auction\productService\ProductServiceApplication.class
+com\auction\productService\productDto\BiddingDto$BiddingDtoBuilder.class
 com\auction\productService\productDto\ProductDto$ProductDtoBuilder.class
+com\auction\productService\productDto\UserDto$UserDtoBuilder.class
+com\auction\productService\scheduler\Scheduler.class
+com\auction\productService\productDto\BiddingDto.class
+com\auction\productService\productDto\UserDto.class
