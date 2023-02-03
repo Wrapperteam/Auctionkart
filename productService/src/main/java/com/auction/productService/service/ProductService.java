@@ -202,6 +202,7 @@ public class ProductService {
             document.add(new Paragraph("Product Type:" + product.getProductType()));
             document.add(new Paragraph("Product Description:" + product.getDescription()));
             document.add(new Paragraph("Product Expiry Date:" + product.getExpiryDateTime()));
+            document.add(new Paragraph("Product Highest bidding amount:" + product.getMinAmount()));
             document.add(new Paragraph("-------------------------------------------------------------------"));
             document.add(new Paragraph("Seller Details:"));
             document.add(new Paragraph("Seller ID:" + seller.getUserId()));
