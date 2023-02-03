@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e4922203-bb6f-4f1a-9192-78c18a974c78" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/aws.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/dto/ProductResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/dto/ProductResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +31,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/ustjavafsdb419/Documents/final code/Auctionkart/productService"
+    "last_opened_file_path": "C:/Users/ustjavafsdb419/Documents/final code/Auctionkart/BiddingService"
   }
 }]]></component>
   <component name="RunManager">

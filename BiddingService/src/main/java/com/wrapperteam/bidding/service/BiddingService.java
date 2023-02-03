@@ -49,6 +49,7 @@ public class BiddingService {
         return "Employee Details Deleted";
     }
 
+    @Transactional
     public String updateBiddingAmount(BiddingModel bidder) {
         String msg="Amount adding";
         RestTemplate restTemplate = new RestTemplate();
