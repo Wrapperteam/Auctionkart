@@ -10,6 +10,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import jakarta.activation.DataSource;
 import jakarta.mail.internet.MimeMessage;
 import jakarta.mail.util.ByteArrayDataSource;
+import org.apache.catalina.User;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -163,16 +164,22 @@ public class ProductService {
     public Product sendEmail(Product product) throws DocumentException {
         RestTemplate restTemplate=new RestTemplate();
         SimpleMailMessage message = new SimpleMailMessage();
+        UserDto bidder=new UserDto();
         ResponseEntity<UserDto> seller=restTemplate.getForEntity("http://localhost:8082/api/findUser/"+product.getSellerId(),UserDto.class);
         ResponseEntity<BiddingDto> biddingDto=restTemplate.getForEntity("http://localhost:8085/bidder/details/"+product.getProductId(),BiddingDto.class);
-       /* if(Objects.isNull(biddingDto.getBody())){
-            message.setTo(seller.getBody().getEmail());
-            message.setSubject("Product "+product.getProductName()+" action is closed without any Bidding");
+        if(Objects.isNull(biddingDto.getBody())){
+
+        }else {
+            ResponseEntity<UserDto> bidderResponce = restTemplate.getForEntity("http://localhost:8082/api/findUser/" + biddingDto.getBody().getBidderId(), UserDto.class);
+            bidder=bidderResponce.getBody();
+        }
+         //   message.setTo(seller.getBody().getEmail());
+           // message.setSubject("Product "+product.getProductName()+" action is closed without any Bidding");
            // message.setText(msgBody());
             //mailSender.send(message);
-        } else { */
-            ResponseEntity<UserDto> bidder = restTemplate.getForEntity("http://localhost:8082/api/findUser/" + biddingDto.getBody().getBidderId(), UserDto.class);
-           biddedDocuments(seller.getBody(),product,bidder.getBody());
+       // } else {
+
+           biddedDocuments(seller.getBody(),product,bidder);
           /*  message.setTo(seller.getBody().getEmail());
             message.setSubject("Product " + product.getProductName() + " action is  closed with "+product.getMinAmount());
             message.setText("body");
@@ -214,17 +221,21 @@ public class ProductService {
             document.add(new Paragraph("Seller Phone number:"+seller.getPhoneNumber()));
             document.add(new Paragraph("Seller Email:"+seller.getUserEmail()));
             document.add(new Paragraph("-------------------------------------------------------------------"));
-            document.add(new Paragraph("Bidder Details:"));
-            document.add(new Paragraph("Bidder ID:" + bidder.getUserId()));
-            document.add(new Paragraph("Bidder Name:"+bidder.getName()));
-            document.add(new Paragraph("Bidder Phone number:"+bidder.getPhoneNumber()));
-            document.add(new Paragraph("Bidder Email:"+bidder.getUserEmail()));
+            if(Objects.isNull(bidder.getUserEmail())) {
+
+            }else {
+                document.add(new Paragraph("Bidder Details:"));
+                document.add(new Paragraph("Bidder ID:" + bidder.getUserId()));
+                document.add(new Paragraph("Bidder Name:" + bidder.getName()));
+                document.add(new Paragraph("Bidder Phone number:" + bidder.getPhoneNumber()));
+                document.add(new Paragraph("Bidder Email:" + bidder.getUserEmail()));
+            }
             document.close();
             byte[] pdfBytes = baos.toByteArray();
             MimeMessage mimeMessage = mailSender.createMimeMessage();
             MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, true);
             mimeMessageHelper.setTo(seller.getUserEmail());
-            if(bidder.getUserEmail().isBlank()) {
+            if(Objects.isNull(bidder.getUserEmail())) {
                 mimeMessageHelper.setSubject("Product " + product.getProductName() + " auction is closed without any Bidding");
             }else{
                 mimeMessageHelper.setSubject("Product " + product.getProductName() +" action is  closed with "+product.getMinAmount());

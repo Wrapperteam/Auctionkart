@@ -66,7 +66,6 @@ public class BiddingService {
         if(response.isActiveFlag()) {
             if(role.equals("BIDDER")) {
             if (biddingtm.compareTo(productDt) < 0) {
-
                     if (bidder.getAmount() > response.getMinAmount()) {
                         BiddingModel bd = repo.findByProductID(bidder.getProductID());
                         if (Objects.nonNull(bd)) {

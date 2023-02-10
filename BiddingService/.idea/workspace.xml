@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="e4922203-bb6f-4f1a-9192-78c18a974c78" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/controller/BiddingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/controller/BiddingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wrapperteam/bidding/service/BiddingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/service/BiddingService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/wrapperteam/bidding/service/BiddingService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../authenticationMicroservice/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../authenticationMicroservice/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/java/com/auction/productService/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/java/com/auction/productService/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/service/ProductService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../productService/target/classes/com/auction/productService/service/ProductService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,5 +71,10 @@
       <updated>1675074334701</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/BiddingService$BiddingApplication.ic" NAME="BiddingApplication Coverage Results" MODIFIED="1676012651145" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.wrapperteam.bidding.*</FILTER>
+    </SUITE>
   </component>
 </project>

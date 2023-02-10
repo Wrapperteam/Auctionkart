@@ -42,9 +42,9 @@ public class BiddingController {
     @GetMapping("/details/{id}")
     public ResponseEntity<?> getByProductId(@PathVariable int id){
         BiddingModel biddingModel = service.getProductById(id);
-        if(Objects.nonNull(biddingModel))
-            return ResponseEntity.ok().body(biddingModel);
-        return ResponseEntity.notFound().build();
+
+            return new ResponseEntity(service.getProductById(id),HttpStatus.ACCEPTED);
+
     }
 
     @PutMapping("/update")
